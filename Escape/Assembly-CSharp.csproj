@@ -58,9 +58,9 @@
   <ItemGroup>
     <Compile Include="Assets\Reedie&apos;s\_Scripts\GenerationAlgorithms.cs" />
     <Compile Include="Assets\Reedie&apos;s\_Scripts\SimpleRandomWalkGenerator.cs" />
-    <Compile Include="Assets\HamzahTheMadFolder\Scripts\PlayerMovement.cs" />
     <Compile Include="Assets\Reedie&apos;s\_Scripts\TilemapVisualizer.cs" />
     <Compile Include="Assets\Reedie&apos;s\_Scripts\AbstractGenerator.cs" />
+    <Compile Include="Assets\HamzahTheMadFolder\Scripts\PlayerMovement.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
