@@ -7,11 +7,7 @@ using Random = UnityEngine.Random;
 public class SimpleRandomWalkGenerator : AbstractGenerator
 {
     [SerializeField]
-    private int iterations = 10;
-    [SerializeField]
-    public int walkLength = 10;
-    [SerializeField]
-    public bool startRandomlyEachIteration = true;
+    private SimpleRandomWalkData randomWalkParameters;
 
     protected override void RunProceduralGeneration()
     {
@@ -24,11 +20,11 @@ public class SimpleRandomWalkGenerator : AbstractGenerator
     {
         var currentPosition = startPosition;
         HashSet<Vector2Int> floorPositions = new HashSet<Vector2Int>();
-        for (int i = 0; i < iterations; i++)
+        for (int i = 0; i < randomWalkParameters.iterations; i++)
         {
-            var path = GenerationAlgorithms.SimpleRandomWalk(currentPosition, walkLength);
+            var path = GenerationAlgorithms.SimpleRandomWalk(currentPosition, randomWalkParameters.walkLength);
             floorPositions.UnionWith(path);
-            if (startRandomlyEachIteration)
+            if (randomWalkParameters.startRandomlyEachIteration)
                 currentPosition = floorPositions.ElementAt(Random.Range(0, floorPositions.Count));
         }
         return floorPositions;
