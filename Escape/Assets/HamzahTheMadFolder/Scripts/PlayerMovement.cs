@@ -4,11 +4,20 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
+    public static PlayerMovement instance;
+
     [SerializeField] private float speed;
-    private Rigidbody2D rb;
+    public bool knockFromRight;
+    public Rigidbody2D rb;
     private Animator anim;
 
+
     Vector2 movement;
+
+    private void Awake()
+    {
+        instance = this;
+    }
 
     void Start()
     {
@@ -30,10 +39,27 @@ public class PlayerMovement : MonoBehaviour
             anim.SetFloat("lastMoveX", Input.GetAxisRaw("Horizontal"));
             anim.SetFloat("lastMoveY", Input.GetAxisRaw("Vertical"));
         }
+
+
     }
 
     private void FixedUpdate()
     {
         rb.MovePosition(rb.position + movement * speed * Time.fixedDeltaTime);
+        movement.Normalize();
+    }
+
+    public IEnumerator Knockback(float knockbackDuration, float knockbackPower, Transform obj)
+    {
+        float timer = 0;
+
+        while (knockbackDuration > timer)
+        {
+            timer += Time.deltaTime;
+            Vector2 direction = (obj.transform.position - this.transform.position).normalized;
+            rb.AddForce(-direction * knockbackPower);
+        }
+
+        yield return 0;
     }
 }
