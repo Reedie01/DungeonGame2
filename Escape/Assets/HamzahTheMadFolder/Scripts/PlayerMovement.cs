@@ -7,7 +7,6 @@ public class PlayerMovement : MonoBehaviour
     public static PlayerMovement instance;
 
     [SerializeField] private float speed;
-    public bool knockFromRight;
     public Rigidbody2D rb;
     private Animator anim;
 

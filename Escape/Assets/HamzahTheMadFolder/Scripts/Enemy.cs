@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-
+    PlayerHealth player;
     public float knockbackPower = 100;
     public float knockbackDuration = 1;
 
@@ -17,6 +17,7 @@ public class Enemy : MonoBehaviour
     {
         currentHealth = maxHealth;
         rb = GetComponent<Rigidbody2D>();
+        player = GetComponent<PlayerHealth>();
     }
 
     public void TakeDamage(int damage)
@@ -51,6 +52,7 @@ public class Enemy : MonoBehaviour
     {
         if(other.tag == "Weapon")
         {
+
             Vector2 difference = (transform.position - other.transform.position) * 2;
             transform.position = new Vector2(transform.position.x + difference.x, transform.position.y + difference.y);
         }
