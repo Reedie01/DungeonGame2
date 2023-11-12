@@ -5,6 +5,7 @@ using UnityEngine;
 using Random = UnityEngine.Random;
 using UnityEngine.Tilemaps;
 using System.Linq;
+
 public class RoomFirstDungeonGenerator : SimpleRandomWalkGenerator
 {
     [SerializeField]
@@ -50,13 +51,13 @@ public class RoomFirstDungeonGenerator : SimpleRandomWalkGenerator
         return floorList[randomIndex];
     }
 
-    private void DestroyAllEnemies()
+    public void DestroyAllEnemies()
     {
         GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
 
         foreach (GameObject enemy in enemies)
         {
-            Destroy(enemy);
+            DestroyImmediate(enemy);
         }
     }
 
