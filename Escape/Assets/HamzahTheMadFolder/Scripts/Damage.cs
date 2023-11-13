@@ -5,23 +5,20 @@ using UnityEngine;
 public class Damage : MonoBehaviour
 {
     public PlayerHealth pHealth;
-    public float damage;
+    private KnockbackFeedback knockback;
+    public float damage = 2;
+
     void Start()
     {
-        
-    }
-
-    
-    void Update()
-    {
-        
+        knockback = GetComponent<KnockbackFeedback>();
+        //pHealth = null;
     }
 
     private void OnCollisionEnter2D(Collision2D other)
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            pHealth.Health -= damage;
+            pHealth.TakeDamage(damage);
         }
     }
 }

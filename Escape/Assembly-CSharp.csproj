@@ -56,8 +56,10 @@
     <Analyzer Include="C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\Extensions\Microsoft\Visual Studio Tools for Unity\Analyzers\Microsoft.Unity.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\HamzahTheMadFolder\Scripts\Damage.cs" />
     <Compile Include="Assets\Reedie&apos;s\_Scripts\GenerationAlgorithms.cs" />
     <Compile Include="Assets\HamzahTheMadFolder\Scripts\PlayerCombat.cs" />
+    <Compile Include="Assets\HamzahTheMadFolder\Scripts\PlayerHealth.cs" />
     <Compile Include="Assets\HamzahTheMadFolder\Scripts\Combat.cs" />
     <Compile Include="Assets\HamzahTheMadFolder\Scripts\AIChase.cs" />
     <Compile Include="Assets\HamzahTheMadFolder\Scripts\Pivot.cs" />
@@ -69,9 +71,11 @@
     <Compile Include="Assets\HamzahTheMadFolder\Scripts\WeaponParent.cs" />
     <Compile Include="Assets\Reedie&apos;s\_Scripts\AbstractGenerator.cs" />
     <Compile Include="Assets\HamzahTheMadFolder\Scripts\Enemy.cs" />
+    <Compile Include="Assets\HamzahTheMadFolder\Scripts\Projectile.cs" />
+    <Compile Include="Assets\HamzahTheMadFolder\Scripts\KnockbackFeedback.cs" />
+    <Compile Include="Assets\HamzahTheMadFolder\Scripts\AIShootChase.cs" />
+    <Compile Include="Assets\HamzahTheMadFolder\Scripts\DashMove.cs" />
     <Compile Include="Assets\Reedie&apos;s\_Scripts\WallGenerator.cs" />
-    <Compile Include="Assets\HamzahTheMadFolder\Scripts\PlayerHealth.cs" />
-    <Compile Include="Assets\HamzahTheMadFolder\Scripts\Damage.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

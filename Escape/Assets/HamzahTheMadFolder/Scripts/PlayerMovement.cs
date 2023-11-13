@@ -7,9 +7,12 @@ public class PlayerMovement : MonoBehaviour
     public static PlayerMovement instance;
 
     [SerializeField] private float speed;
+
     public Rigidbody2D rb;
     private Animator anim;
 
+    private KnockbackFeedback knockback;
+    
 
     Vector2 movement;
 
@@ -22,10 +25,12 @@ public class PlayerMovement : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
+        knockback = GetComponent<KnockbackFeedback>();
     }
 
     void Update()
     {
+
         movement.x = Input.GetAxisRaw("Horizontal");
         movement.y = Input.GetAxisRaw("Vertical");
 
@@ -38,8 +43,6 @@ public class PlayerMovement : MonoBehaviour
             anim.SetFloat("lastMoveX", Input.GetAxisRaw("Horizontal"));
             anim.SetFloat("lastMoveY", Input.GetAxisRaw("Vertical"));
         }
-
-
     }
 
     private void FixedUpdate()
@@ -47,6 +50,9 @@ public class PlayerMovement : MonoBehaviour
         rb.MovePosition(rb.position + movement * speed * Time.fixedDeltaTime);
         movement.Normalize();
     }
+
+
+
 
     public IEnumerator Knockback(float knockbackDuration, float knockbackPower, Transform obj)
     {

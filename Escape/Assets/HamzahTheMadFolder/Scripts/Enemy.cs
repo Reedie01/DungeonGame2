@@ -1,3 +1,4 @@
+using Microsoft.Unity.VisualStudio.Editor;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,6 +10,7 @@ public class Enemy : MonoBehaviour
     public float knockbackDuration = 1;
 
     Rigidbody2D rb;
+    Animator anim;
 
     public int maxHealth = 100;
     int currentHealth;
@@ -18,6 +20,7 @@ public class Enemy : MonoBehaviour
         currentHealth = maxHealth;
         rb = GetComponent<Rigidbody2D>();
         player = GetComponent<PlayerHealth>();
+        anim = GetComponent<Animator>();
     }
 
     public void TakeDamage(int damage)
@@ -25,9 +28,8 @@ public class Enemy : MonoBehaviour
         currentHealth -= damage;
         Debug.Log(currentHealth);
 
-        //hurt anim
 
-        if(currentHealth <= 0)
+        if(currentHealth == 0)
         {
             Die();
         }
@@ -47,12 +49,10 @@ public class Enemy : MonoBehaviour
         }
     }
 
-
     private void OnTriggerEnter2D(Collider2D other)
     {
         if(other.tag == "Weapon")
         {
-
             Vector2 difference = (transform.position - other.transform.position) * 2;
             transform.position = new Vector2(transform.position.x + difference.x, transform.position.y + difference.y);
         }
