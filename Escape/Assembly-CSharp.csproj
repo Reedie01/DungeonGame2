@@ -76,6 +76,9 @@
     <Compile Include="Assets\HamzahTheMadFolder\Scripts\AIShootChase.cs" />
     <Compile Include="Assets\HamzahTheMadFolder\Scripts\DashMove.cs" />
     <Compile Include="Assets\Reedie&apos;s\_Scripts\WallGenerator.cs" />
+    <Compile Include="Assets\Reedie&apos;s\_Scripts\RoomFirstDungeonGenerator.cs" />
+    <Compile Include="Assets\Reedie&apos;s\_Scripts\CorridorFirstDungeonGenerator.cs" />
+    <Compile Include="Assets\Reedie&apos;s\_Scripts\WallTypesHelper.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
