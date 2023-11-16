@@ -19,7 +19,11 @@ MonoBehaviour:
     width: 1920
     height: 989
   m_ShowMode: 4
+<<<<<<< HEAD
   m_Title: Inspector
+=======
+  m_Title: Scene
+>>>>>>> origin/main
   m_RootView: {fileID: 6}
   m_MinSize: {x: 875, y: 300}
   m_MaxSize: {x: 10000, y: 10000}
@@ -48,7 +52,11 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 200}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 0
+<<<<<<< HEAD
   controlID: 36454
+=======
+  controlID: 19
+>>>>>>> origin/main
 --- !u!114 &3
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -223,7 +231,11 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 200}
   m_MaxSize: {x: 16192, y: 16192}
   vertical: 1
+<<<<<<< HEAD
   controlID: 36526
+=======
+  controlID: 20
+>>>>>>> origin/main
 --- !u!114 &10
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -244,11 +256,19 @@ MonoBehaviour:
     x: 0
     y: 0
     width: 1466
+<<<<<<< HEAD
     height: 556
   m_MinSize: {x: 200, y: 100}
   m_MaxSize: {x: 16192, y: 8096}
   vertical: 0
   controlID: 36527
+=======
+    height: 710
+  m_MinSize: {x: 200, y: 100}
+  m_MaxSize: {x: 16192, y: 8096}
+  vertical: 0
+  controlID: 21
+>>>>>>> origin/main
 --- !u!114 &11
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -317,22 +337,37 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
+<<<<<<< HEAD
     - Assets/Reedie's/_Scripts
+=======
+    - Assets/Scenes
+>>>>>>> origin/main
     m_Globs: []
     m_OriginalText: 
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
+<<<<<<< HEAD
   - Assets/Reedie's/_Scripts
+=======
+  - Assets/Scenes
+>>>>>>> origin/main
   m_LastFoldersGridSize: -1
   m_LastProjectPath: C:\Users\jackj\OneDrive\Documents\Repo\Escape\Escape
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
+<<<<<<< HEAD
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 8c670000
     m_LastClickedID: 26508
     m_ExpandedIDs: 000000007a6700008467000000ca9a3b
+=======
+    scrollPos: {x: 0, y: 36}
+    m_SelectedIDs: 48640000
+    m_LastClickedID: 25672
+    m_ExpandedIDs: 00000000f66300004464000000ca9a3b
+>>>>>>> origin/main
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -360,7 +395,11 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
+<<<<<<< HEAD
     m_ExpandedIDs: 000000007a67000000ca9a3b
+=======
+    m_ExpandedIDs: 00000000f6630000
+>>>>>>> origin/main
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -488,9 +527,13 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 
+      m_SelectedIDs: 88640000
       m_LastClickedID: 0
+<<<<<<< HEAD
       m_ExpandedIDs: c47ffbff0880fbff1082fbfff4d0fdff2cd1fdff34d3fdffcae1fdff20fbffffa09201000a940100be940100009501000a950100249501005a950100e4950100
+=======
+      m_ExpandedIDs: 2af9ffff0afbffff
+>>>>>>> origin/main
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: GameScreen
@@ -794,9 +837,15 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
+<<<<<<< HEAD
     m_Target: {x: 487.71106, y: 301.1566, z: -25.915308}
     speed: 2
     m_Value: {x: 487.71106, y: 301.1566, z: -25.915308}
+=======
+    m_Target: {x: 8.473531, y: 3.2395325, z: -0.011364753}
+    speed: 2
+    m_Value: {x: 8.069162, y: 3.1504138, z: -0.0073452983}
+>>>>>>> origin/main
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -847,9 +896,15 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0, y: 0, z: 0, w: 1}
   m_Size:
+<<<<<<< HEAD
     m_Target: 6.844028
     speed: 2
     m_Value: 6.844028
+=======
+    m_Target: 9.334016
+    speed: 2
+    m_Value: 8.932073
+>>>>>>> origin/main
   m_Ortho:
     m_Target: 1
     speed: 2
