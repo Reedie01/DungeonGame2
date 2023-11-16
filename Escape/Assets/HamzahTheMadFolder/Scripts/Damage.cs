@@ -7,11 +7,14 @@ public class Damage : MonoBehaviour
     public PlayerHealth pHealth;
     private KnockbackFeedback knockback;
     public float damage = 2;
+    public GameObject player;
 
     void Start()
     {
+        string tag = gameObject.tag;
+        player = GameObject.FindGameObjectWithTag("Player");
         knockback = GetComponent<KnockbackFeedback>();
-        //pHealth = null;
+        pHealth = player.GetComponent<PlayerHealth>();
     }
 
     private void OnCollisionEnter2D(Collision2D other)
@@ -19,6 +22,10 @@ public class Damage : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             pHealth.TakeDamage(damage);
+            if (tag == "Projectile")
+            {
+                Destroy(gameObject);
+            }
         }
     }
 }

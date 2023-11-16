@@ -24,6 +24,9 @@ public class AIShootChase : MonoBehaviour
 
     Animator anim;
 
+    public float onHitDelay = 5f;
+
+    public bool hit = false;
 
     void Start()
     {
@@ -32,46 +35,72 @@ public class AIShootChase : MonoBehaviour
         anim = GetComponent<Animator>();
     }
 
-    
+    public void OnHit(float delay)
+    {
+        if (!hit)
+        {
+            StartCoroutine(Hit(delay));
+        }
+
+    }
+
+    IEnumerator Hit(float delay)
+    {
+        hit = true;
+        yield return new WaitForSeconds(delay);
+        hit = false;
+    }
+
+
     void Update()
     {
-        anim.SetBool("isRunning", isRunning);
+        if (!hit)
+        {
+            anim.SetBool("isRunning", isRunning);
 
-        if (Vector2.Distance(transform.position, player.position) > stoppingDistance)
-        {
-            transform.position = Vector2.MoveTowards(transform.position, player.position, speed * Time.deltaTime);
-            isRunning = true;
-        }
-        else if(Vector2.Distance(transform.position, player.position) < stoppingDistance /* && Vector2.Distance(transform.position, player.position) > stoppingDistance */)
-        {
-            transform.position = this.transform.position;
-            isRunning = false;
-        }
-        else if(Vector2.Distance(transform.position, player.position) < retreatDistance)
-        {
-            transform.position = Vector2.MoveTowards(transform.position, player.position, -speed * Time.deltaTime);
-            isRunning = true;
-        }
+            if (Vector2.Distance(transform.position, player.position) > stoppingDistance)
+            {
+                transform.position = Vector2.MoveTowards(transform.position, player.position, speed * Time.deltaTime);
+                isRunning = true;
+            }
+            else if (Vector2.Distance(transform.position, player.position) < stoppingDistance /* && Vector2.Distance(transform.position, player.position) > stoppingDistance */)
+            {
+                transform.position = this.transform.position;
+                isRunning = false;
+            }
+            else if (Vector2.Distance(transform.position, player.position) < retreatDistance)
+            {
+                transform.position = Vector2.MoveTowards(transform.position, player.position, -speed * Time.deltaTime);
+                isRunning = true;
+            }
 
-        if(timeBtwShots <= 0)
-        {
-            Instantiate(projectile, transform.position, Quaternion.identity);
-            timeBtwShots = startTimeBtwShots;
-        }
-        else
-        {
-            timeBtwShots -= Time.deltaTime;
-        }
+            if (timeBtwShots <= 0)
+            {
+                GameObject lastShot = Instantiate(projectile, transform.position, Quaternion.identity);
+                lastShot.layer = 8;
+                lastShot.tag = "Projectile";
+                timeBtwShots = startTimeBtwShots;
 
-        dir = player.position - transform.position;
-        float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
-        dir.Normalize();
-        movement = dir;
+            }
+            else
+            {
+                timeBtwShots -= Time.deltaTime;
+            }
 
-        if (shouldRotate)
-        {
-            anim.SetFloat("X", dir.x);
-            anim.SetFloat("Y", dir.y);
+            dir = player.position - transform.position;
+            float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+            dir.Normalize();
+            movement = dir;
+
+            if (shouldRotate)
+            {
+                anim.SetFloat("X", dir.x);
+                anim.SetFloat("Y", dir.y);
+            }
         }
+        Vector3 newPosition = new Vector3(transform.position.x, transform.position.y, 0f);
+        transform.position = newPosition;
+        
+
     }
 }

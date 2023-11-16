@@ -20,11 +20,19 @@ public class RoomFirstDungeonGenerator : SimpleRandomWalkGenerator
 
     public Tilemap floorTilemap, wallTilemap;
 
+    public Transform parentObject;
+
     public GameObject playerPrefab;
-    public GameObject enemyPrefab;
-    public GameObject enemyPrefab1;
-    public GameObject enemyPrefab2;
-    public GameObject enemyPrefab3;
+    public GameObject slime;
+    public GameObject mage;
+    public GameObject slime1;
+    public GameObject zombie;
+
+    public Transform enemies;
+
+    public PlayerHealth playerHealth;
+
+    public GameObject player;
 
     public int numberOfEnemies = 10;
 
@@ -32,6 +40,7 @@ public class RoomFirstDungeonGenerator : SimpleRandomWalkGenerator
 
     protected override void RunProceduralGeneration()
     {
+        HealPlayer();
         DestroyAllEnemies();
         CreateRooms();
     }
@@ -51,6 +60,12 @@ public class RoomFirstDungeonGenerator : SimpleRandomWalkGenerator
         return floorList[randomIndex];
     }
 
+    private void HealPlayer()
+    {
+        playerHealth = player.GetComponent<PlayerHealth>();
+        playerHealth.Heal();
+    }
+
     public void DestroyAllEnemies()
     {
         GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
@@ -58,6 +73,20 @@ public class RoomFirstDungeonGenerator : SimpleRandomWalkGenerator
         foreach (GameObject enemy in enemies)
         {
             DestroyImmediate(enemy);
+        }
+
+        GameObject[] wizards = GameObject.FindGameObjectsWithTag("Mage");
+
+        foreach (GameObject wizard in wizards)
+        {
+            DestroyImmediate(wizard);
+        }
+
+        GameObject[] bullets = GameObject.FindGameObjectsWithTag("Projectile");
+
+        foreach (GameObject bullet in bullets)
+        {
+            DestroyImmediate(bullet);
         }
     }
 
@@ -67,7 +96,8 @@ public class RoomFirstDungeonGenerator : SimpleRandomWalkGenerator
         Vector3Int worldOffset = spawnPositionCell - (Vector3Int)randomPosition;
         spawnPositionCell = floorTilemap.WorldToCell((Vector3Int)randomPosition) - worldOffset;
         Vector3 spawnPosition = floorTilemap.GetCellCenterWorld((Vector3Int)spawnPositionCell);
-        return spawnPosition;
+        Vector3 trueSpawnPosition = new Vector3(spawnPosition.x, spawnPosition.y, 0f);
+        return trueSpawnPosition;
     }
 
     private void CreateRooms()
@@ -89,11 +119,23 @@ public class RoomFirstDungeonGenerator : SimpleRandomWalkGenerator
             if(existingPlayer == null)
             {
                 GameObject newPlayer = Instantiate(playerPrefab, (Vector3Int)playerSpawn, Quaternion.identity);
+                Vector3 newPosition = new Vector3(newPlayer.transform.position.x, newPlayer.transform.position.y, -1f);
+                newPlayer.transform.position = newPosition;
+                Debug.Log(newPosition);
                 newPlayer.tag = "Player";
             }
-            else
+            else if (existingPlayer != null)
             {
-                existingPlayer.transform.position = (Vector3Int)playerSpawn;
+                existingPlayer.SetActive(true);
+                Vector3 playerSpawn1 = parentObject.TransformPoint(playerSpawn.x, playerSpawn.y, 0f);
+                existingPlayer.transform.position = (Vector3)playerSpawn1;
+                Debug.Log(playerSpawn);
+                Debug.Log(existingPlayer.transform.position);
+                existingPlayer = GameObject.FindGameObjectWithTag("Player");
+                if ((Vector3Int)playerSpawn != existingPlayer.transform.position)
+                {
+                    Debug.Log((Vector3Int)playerSpawn - existingPlayer.transform.position);
+                }
                 existingPlayer.SetActive(true);
             }
             for (int i = 0; i < numberOfEnemies; i++)
@@ -101,26 +143,46 @@ public class RoomFirstDungeonGenerator : SimpleRandomWalkGenerator
                 Vector2Int randomPosition = GetRandomFloorPosition(floor);
                 //type 0
                 Vector3 enemySpawn = EnemySpawnCalulations(floorTilemap, randomPosition);
-                GameObject newEnemy = Instantiate(enemyPrefab, enemySpawn, Quaternion.identity);
+                GameObject newEnemy = Instantiate(slime, enemySpawn, Quaternion.identity);
                 newEnemy.tag = "Enemy";
+                Vector3 newPosition = new Vector3(newEnemy.transform.position.x, newEnemy.transform.position.y, -1f);
+                newEnemy.transform.position = newPosition;
+                newEnemy.layer = 7;
+                newEnemy.transform.SetParent(enemies);
 
                 Vector2Int randomPosition1 = GetRandomFloorPosition(floor);
                 //type 1
                 Vector3 enemySpawn1 = EnemySpawnCalulations(floorTilemap, randomPosition1);
-                GameObject newEnemy1 = Instantiate(enemyPrefab, enemySpawn1, Quaternion.identity);
+                GameObject newEnemy1 = Instantiate(mage, enemySpawn1, Quaternion.identity);
                 newEnemy1.tag = "Enemy";
+                Vector3 newPosition1 = new Vector3(newEnemy1.transform.position.x, newEnemy1.transform.position.y, -1f);
+                newEnemy1.transform.position = newPosition1;
+                newEnemy1.layer = 7;
+                newEnemy1.transform.SetParent(enemies);
 
                 Vector2Int randomPosition2 = GetRandomFloorPosition(floor);
                 //type2
                 Vector3 enemySpawn2 = EnemySpawnCalulations(floorTilemap, randomPosition2);
-                GameObject newEnemy2 = Instantiate(enemyPrefab, enemySpawn2, Quaternion.identity);
+                GameObject newEnemy2 = Instantiate(slime1, enemySpawn2, Quaternion.identity);
                 newEnemy2.tag = "Enemy";
+                Vector3 newPosition2 = new Vector3(newEnemy2.transform.position.x, newEnemy2.transform.position.y, -1f);
+                newEnemy2.transform.position = newPosition2;
+                newEnemy2.layer = 7;
+                newEnemy2.transform.SetParent(enemies);
 
                 Vector2Int randomPosition3 = GetRandomFloorPosition(floor);
                 //type 3
                 Vector3 enemySpawn3 = EnemySpawnCalulations(floorTilemap, randomPosition3);
-                GameObject newEnemy3 = Instantiate(enemyPrefab, enemySpawn3, Quaternion.identity);
+                GameObject newEnemy3 = Instantiate(zombie, enemySpawn3, Quaternion.identity);
                 newEnemy3.tag = "Enemy";
+                Vector3 newPosition3 = new Vector3(newEnemy3.transform.position.x, newEnemy3.transform.position.y, -1f);
+                newEnemy3.transform.position = newPosition3;
+                newEnemy3.layer = 7;
+                newEnemy3.transform.SetParent(enemies);
+                /*Debug.Log($"Slime{newPosition}   {newEnemy.transform.position}");
+                Debug.Log($"Mage{newPosition1}   {newEnemy1.transform.position}");
+                Debug.Log($"Slime{newPosition2}   {newEnemy2.transform.position}");
+                Debug.Log($"Zombie{newPosition3}  {newEnemy3.transform.position}");*/
             }
         }
 

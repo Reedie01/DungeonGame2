@@ -6,22 +6,67 @@ public class Projectile : MonoBehaviour
 {
     public float speed;
 
-    private Transform player;
-    private Vector2 target;
+    public float shotDuration = 5f;
 
-    private void Start()
+    private Transform player;
+    private Vector3 target;
+
+    public string mageTag = "Mage";
+    private int mageLayer;
+
+    private void Awake()
     {
-        player = GameObject.FindGameObjectWithTag("Player").transform;
-        target = new Vector2(player.position.x, player.position.y);
+        StartCoroutine(Fired());
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        if(player != null)
+        {
+            MoveTowardsTarget(player);
+            Vector3 newPosition = new Vector3(transform.position.x, transform.position.y, 0f);
+            transform.position = newPosition;
+        }
+        
     }
 
-    private void Update()
+    IEnumerator Fired()
     {
-        transform.position = Vector2.MoveTowards(transform.position, target, speed * Time.deltaTime);
+        yield return new WaitForSeconds(shotDuration);
+        Destroy(gameObject);
+    }
 
-        if (transform.position.x == target.x && transform.position.y == target.y)
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Walls"))
         {
             Destroy(gameObject);
+        }
+
+        if (collision.gameObject.CompareTag("Mage"))
+        {
+            // Ignore collision with objects tagged as "Mage"
+            Physics2D.IgnoreCollision(GetComponent<Collider2D>(), collision.collider, true);
+        }
+    }
+
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Mage"))
+        {
+            // Resume collision with objects tagged as "Mage"
+            Physics2D.IgnoreCollision(GetComponent<Collider2D>(), collision.collider, false);
+        }
+    }
+    private void MoveTowardsTarget(GameObject target)
+    {
+        Rigidbody2D rb2D = GetComponent<Rigidbody2D>();
+
+        if (rb2D != null && target != null)
+        {
+            Vector2 direction = ((Vector2)target.transform.position - rb2D.position).normalized;
+            rb2D.velocity = direction * speed;
+        }
+        else if (rb2D == null)
+        {
+            Debug.Log("missing rb2D");
         }
     }
 }

@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: 4527118584291741571}
   - component: {fileID: 7530135745225727301}
   - component: {fileID: 4887885490631891418}
+  - component: {fileID: 7342526167697908290}
+  - component: {fileID: 8221916384049259868}
   m_Layer: 10
   m_Name: Arrow
   m_TagString: Enemies
@@ -98,7 +100,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75328edbf4092014b951f74e6fdf68d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 3
+  speed: 10
+  shotDuration: 5
 --- !u!114 &4887885490631891418
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -112,4 +115,42 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pHealth: {fileID: 8818201661651514764, guid: ff47d8b0cdd91da4292ab725db838ca6, type: 3}
-  damage: 100
+  damage: 1
+  player: {fileID: 0}
+--- !u!58 &7342526167697908290
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7788431826312125592}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.11850786
+--- !u!50 &8221916384049259868
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7788431826312125592}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0

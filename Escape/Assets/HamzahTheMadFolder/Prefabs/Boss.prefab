@@ -32,7 +32,7 @@ Transform:
   m_GameObject: {fileID: 4999616889034046036}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -2.966, y: -2.4708745, z: 0}
-  m_LocalScale: {x: 4.106825, y: 4.106825, z: 5.4757667}
+  m_LocalScale: {x: 4.106825, y: 4.106825, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -124,8 +124,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   knockbackPower: 35
-  knockbackDuration: 1
+  knockbackDuration: 0.3
+  forceAmount: 10
+  currentPlayer: {fileID: 0}
   maxHealth: 200
+  currentHealth: 0
+  hit: 0
+  aIChase: {fileID: 0}
+  mageAIChase: {fileID: 0}
 --- !u!114 &4999616889034046034
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -146,6 +152,9 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   dir: {x: 0, y: 0, z: 0}
+  onHitDelay: 5
+  hit: 0
+  playerHealth: {fileID: 0}
 --- !u!114 &4999616889034046045
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -160,6 +169,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pHealth: {fileID: 0}
   damage: 10
+  player: {fileID: 0}
 --- !u!95 &1346429993
 Animator:
   serializedVersion: 5

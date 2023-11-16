@@ -5,10 +5,13 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/MadLad.unity
     guid: 65cc0f0ab1b06454e8e32137a24e07bc
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/HamzahDeathScene.unity
     guid: a79de8f85e818914baf7b9c28eeb4a27
+  - enabled: 1
+    path: Assets/Scenes/Reedie's.unity
+    guid: 7028e8d770e6b6146ac11b6b91f8035f
   m_configObjects: {}

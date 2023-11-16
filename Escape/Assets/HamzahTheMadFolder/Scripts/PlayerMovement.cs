@@ -52,9 +52,15 @@ public class PlayerMovement : MonoBehaviour
     }
 
 
+/*    public void TakeKnockback(Vector2 targetPosition, float forceAmount)
+    {
+        Vector2 direction = (Vector2)transform.position - targetPosition;
+        direction.Normalize();
+        rb.AddForce(-direction * forceAmount, ForceMode2D.Impulse);
+        Debug.Log("Applied Force: Player " + direction * forceAmount);
+    }*/
 
-
-    public IEnumerator Knockback(float knockbackDuration, float knockbackPower, Transform obj)
+    /*public IEnumerator Knockback(float knockbackDuration, float knockbackPower, Transform obj)
     {
         float timer = 0;
 
@@ -66,5 +72,5 @@ public class PlayerMovement : MonoBehaviour
         }
 
         yield return 0;
-    }
+    }*/
 }

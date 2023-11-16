@@ -31,8 +31,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7148633952296319057}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.633, y: -2.678, z: -0.05849566}
-  m_LocalScale: {x: 5.7148, y: 5.7148, z: 5.7148}
+  m_LocalPosition: {x: -2.633, y: -2.678, z: 0}
+  m_LocalScale: {x: 5.7148, y: 5.7148, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -172,6 +172,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   dir: {x: 0, y: 0, z: 0}
+  playerHealth: {fileID: 0}
 --- !u!114 &7148633952296319063
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -186,6 +187,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pHealth: {fileID: 0}
   damage: 5
+  player: {fileID: 0}
 --- !u!95 &7148633952296319056
 Animator:
   serializedVersion: 5
